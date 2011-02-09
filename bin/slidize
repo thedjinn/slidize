@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+
+require "rubygems"
+require "bundler/setup"
+require "optparse"
+require "slidize"
+
+output = Slidize.process("test.md")
+p output
+
+# write output
+File.open("output.html", "w") do |f|
+  f.write(output)
+end
