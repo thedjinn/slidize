@@ -2,7 +2,7 @@
 
 // TODO: integrate stuff from zurb
 
-html, body {
+html, body, #viewport {
     overflow: hidden;
 }
 
@@ -11,7 +11,7 @@ html {
     font-family: helvetica, Arial;
 }
 
-#slides {
+#slides, #viewport {
     position: absolute;
     width: 100%;
     height: 100%;

@@ -15,11 +15,12 @@
     #help
       %p Some help text here
       %p Powered by Slidize
-    #slides
-      - slides.each do |slide|
-        .slide{:class => slide["class"], :title => slide["title"]}
-          .inner
-            :preserve
-              #{slide.html}
+    #viewport
+      #slides
+        - slides.each do |slide|
+          .slide{:class => slide["class"], :title => slide["title"]}
+            .inner
+              :preserve
+                #{slide.html}
     :javascript
       #{javascript}
