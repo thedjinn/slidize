@@ -1,13 +1,14 @@
-function nearestpow2(x){
-    return Math.pow(2,Math.round(Math.log(x)/Math.log(2))); 
-}
-
 $(function(){
+    // Cached jQuery objects
     var jqwindow = $(window);
     var slides = $(".slide");
     var viewport = $("#slides");
+
+    // Screen size
     var screenw = jqwindow.width();
     var screenh = jqwindow.height();
+
+    // Current state
     var expose = false;
     var current = 0;
 
@@ -19,6 +20,7 @@ $(function(){
         $(this).css("background-color", hue); 
     });
 
+    // Apply a set of css transformation properties to a jQuery object
     function transform(jq, trans) {
         jq.css({
             "-webkit-transform": "translateZ(0) "+trans, // Apply translateZ hack to prevent texture subloading delay
@@ -28,6 +30,20 @@ $(function(){
         });
     }
 
+    // Immediately apply a set of css transition properties to a jQuery object
+    function transition(jq, trans) {
+        jq.css({
+            "-webkit-transition": trans,
+            "-moz-transition": trans,
+            "-o-transition": trans,
+            "transition": trans,
+        });
+
+        // Trigger a reflow so the transition gets applied immediately
+        jq.outerWidth(); // TODO: Find a function with less computational overhead
+    }
+
+    // Reflow the layout to expose mode
     function exposeflow() {
         var num = slides.length;
         var a = Math.ceil(Math.sqrt(num));
@@ -35,6 +51,10 @@ $(function(){
         var sy = 1.0/Math.ceil(num/a);
         var dx = screenw*sx;
         var dy = screenh*sy;
+
+        // Prepare transition
+        transition(slide, "2s ease all");
+
         slides.each(function(i,e) {
             var x = i%a;
             var y = Math.floor(i/a);
@@ -43,13 +63,25 @@ $(function(){
         transform(viewport,"translateX(0)");
     }
 
+    // Set the top-left coordinates of the viewport window
+    function setviewport(x,y) {
+        transform(viewport,"translateX(-"+x+"px) translateY(-"+y+"px)");
+    }
+
+    // Scroll to the currently active slide
+    function scrolltocurrent() {
+        setviewport(current*screenw,0);
+    }
+
+    // Reflow the layout to a horizontal strip
     function normalflow() {
         slides.each(function(i,e) {
             transform($(this),"translateX("+(i*screenw)+"px) scale(1.0,1.0)");
         });
-        transform(viewport,"translateX(-"+(current*screenw)+"px)");
+        scrolltocurrent();
     }
 
+    // Reflow the slide layout to the current mode
     function reflow() {
         if (expose) {
             exposeflow();
@@ -58,45 +90,53 @@ $(function(){
         }
     }
 
+    // Go to the next slide
     function nextslide() {
-        // TODO: bounds checking, different animation
-        current++;
-        normalflow();
+        if (current<slides.length-1) {
+            current++;
+            scrolltocurrent();
+        }
     }
 
+    // Go to the previous slide
     function prevslide() {
-        // TODO: bounds checking, different animation
-        current--;
-        normalflow();
+        if (current>0) {
+            current--;
+            scrolltocurrent();
+        }
     }
 
+    // Go to the first slide
     function firstslide() {
-        // TODO: different animation
         current=0;
-        normalflow();
+        scrolltocurrent();
     }
 
+    // Go to the last slide
     function lastslide() {
-        // TODO: different animation
         current=slides.length-1;
-        normalflow();
+        scrolltocurrent();
     }
 
+    // Toggle the help panel
     function togglehelp() {
 
     }
 
+    // Toggle expose mode
     function togglexpose() {
         expose = !expose;
         reflow();
     }
 
+    // Resize hook to maintain correct slide dimensions
     jqwindow.resize(function(e) {
         screenw = jqwindow.width();
         screenh = jqwindow.height();
         reflow();
     });
 
+    // Keyboard hook
     $(document).keydown(function(e) {
         keymap = {
             33: prevslide,   // pgup
@@ -115,6 +155,7 @@ $(function(){
         keymap[e.which]();
     });
 
+    // DEBUG
     $("#expose").click(function(e) {
         if (!expose) {
             exposeflow();
@@ -122,6 +163,7 @@ $(function(){
         }
     });
 
+    // Slide click hook
     slides.click(function(e) {
         if (expose) {
             var t = $(this).get()[0];
@@ -136,5 +178,6 @@ $(function(){
         }
     });
 
+    // Initialization
     normalflow();
 });
