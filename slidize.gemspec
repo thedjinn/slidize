@@ -9,9 +9,9 @@ Gem::Specification.new do |s|
 
   s.authors     = ["Emil Loer"]
   s.email       = ["emil@koffietijd.net"]
-  s.homepage    = "http://github.com/thedjinn/gitbot"
-  s.summary     = %q{Slidize is an HTML5 slide generator using Markdown}
-  s.description = %q{Slidize is an HTML5 slide generator using Markdown}
+  s.homepage    = "http://github.com/thedjinn/slidize"
+  s.summary     = %q{Slidize is a themeable Kramdown/Markdown to HTML5 slide generator}
+  s.description = %q{Slidize is a themeable Kramdown/Markdown to HTML5 slide generator}
   s.licenses    = ["MIT"]
 
   s.rubyforge_project = "slidize"
