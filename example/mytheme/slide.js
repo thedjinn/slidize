@@ -36,7 +36,7 @@ $(function(){
             "-webkit-transition": trans,
             "-moz-transition": trans,
             "-o-transition": trans,
-            "transition": trans,
+            "transition": trans
         });
 
         // Trigger a reflow so the transition gets applied immediately
