@@ -40,7 +40,7 @@ $(function(){
         });
 
         // Trigger a reflow so the transition gets applied immediately
-        jq.outerWidth(); // TODO: Find a function with less computational overhead
+        var tmp=jq.outerWidth(); // TODO: Find a function with less computational overhead
     }
 
     // Reflow the layout to expose mode
@@ -53,7 +53,8 @@ $(function(){
         var dy = screenh*sy;
 
         // Prepare transition
-        transition(slide, "2s ease all");
+        transition(viewport, "2s ease all");
+        transition(slides, "2s ease all");
 
         slides.each(function(i,e) {
             var x = i%a;
@@ -75,6 +76,8 @@ $(function(){
 
     // Reflow the layout to a horizontal strip
     function normalflow() {
+        transition(viewport, "1s ease all");
+        transition(slides, "1s ease all");
         slides.each(function(i,e) {
             transform($(this),"translateX("+(i*screenw)+"px) scale(1.0,1.0)");
         });
@@ -93,6 +96,7 @@ $(function(){
     // Go to the next slide
     function nextslide() {
         if (current<slides.length-1) {
+            transition(viewport, ".3s ease all");
             current++;
             scrolltocurrent();
         }
@@ -101,6 +105,7 @@ $(function(){
     // Go to the previous slide
     function prevslide() {
         if (current>0) {
+            transition(viewport, ".3s ease all");
             current--;
             scrolltocurrent();
         }
@@ -108,12 +113,14 @@ $(function(){
 
     // Go to the first slide
     function firstslide() {
+        transition(viewport, ".3s ease all");
         current=0;
         scrolltocurrent();
     }
 
     // Go to the last slide
     function lastslide() {
+        transition(viewport, ".3s ease all");
         current=slides.length-1;
         scrolltocurrent();
     }
