@@ -96,7 +96,7 @@ $(function(){
 
     // Go to the next slide
     function nextslide() {
-        if (current<slides.length-1) {
+        if (current<slides.length-1 && !expose) {
             transition(viewport, ".3s ease all");
             current++;
             scrolltocurrent();
@@ -105,7 +105,7 @@ $(function(){
 
     // Go to the previous slide
     function prevslide() {
-        if (current>0) {
+        if (current>0 && !expose) {
             transition(viewport, ".3s ease all");
             current--;
             scrolltocurrent();
@@ -114,16 +114,20 @@ $(function(){
 
     // Go to the first slide
     function firstslide() {
-        transition(viewport, ".3s ease all");
-        current=0;
-        scrolltocurrent();
+        if (!expose) {
+            transition(viewport, ".3s ease all");
+            current=0;
+            scrolltocurrent();
+        }
     }
 
     // Go to the last slide
     function lastslide() {
-        transition(viewport, ".3s ease all");
-        current=slides.length-1;
-        scrolltocurrent();
+        if (!expose) {
+            transition(viewport, ".3s ease all");
+            current=slides.length-1;
+            scrolltocurrent();
+        }
     }
 
     // Toggle the help panel
