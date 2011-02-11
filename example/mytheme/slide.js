@@ -193,6 +193,11 @@ $(function(){
         }
     });
 
+    // Hide flash after a few seconds
+    setTimeout(function() {
+        transform($("#flash"),"translateY(-10em)");
+    }, 3000);
+
     // Initialization
     normalflow();
 });

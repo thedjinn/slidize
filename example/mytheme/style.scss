@@ -74,7 +74,7 @@ pre {
     -webkit-border-bottom-left-radius: 6px;
     -webkit-border-bottom-right-radius: 6px;
     background: #fff -webkit-gradient(linear, left top, left bottom, from(rgb(255,255,255)), to(rgb(230,230,230)));
-    -webkit-transition: -webkit-transform 1s ease-out;
+    -webkit-transition: -webkit-transform .5s ease-in;
     -webkit-transform: translateY(-0px);
 
     p + p {
