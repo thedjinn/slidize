@@ -25,6 +25,7 @@ $(function(){
         jq.css({
             "-webkit-transform": "translateZ(0) "+trans, // Apply translateZ hack to prevent texture subloading delay
             "-moz-transform": trans,
+            "-ms-transform": trans,
             "-o-transform": trans,
             "transform": trans
         });
