@@ -166,9 +166,9 @@ $(function(){
     // Slide click hook
     slides.click(function(e) {
         if (expose) {
-            var t = $(this).get()[0];
+            var this_slide = $(this).get()[0];
             slides.each(function(i,e) {
-                if (t == e) {
+                if (this_slide == e) {
                     current = i;
                 }
             });
