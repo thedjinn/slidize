@@ -165,7 +165,7 @@ $(function(){
             36: firstslide,  // home
             35: lastslide,   // end
             72: togglehelp,  // h
-            101: togglexpose // e
+            69: togglexpose  // e
         };
         keymap[e.which]();
     });
