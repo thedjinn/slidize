@@ -3,6 +3,7 @@ $(function(){
     var jqwindow = $(window);
     var slides = $(".slide");
     var viewport = $("#slides");
+    var help = $("#help");
 
     // Screen size
     var screenw = jqwindow.width();
@@ -10,6 +11,7 @@ $(function(){
 
     // Current state
     var expose = false;
+    var showhelp = false;
     var current = 0;
 
     // debug
@@ -132,7 +134,8 @@ $(function(){
 
     // Toggle the help panel
     function togglehelp() {
-
+        showhelp=!showhelp;
+        help.css("opacity",showhelp?"1":"0.0");
     }
 
     // Toggle expose mode
