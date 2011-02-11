@@ -171,12 +171,12 @@ $(function(){
     });
 
     // DEBUG
-    $("#expose").click(function(e) {
-        if (!expose) {
-            exposeflow();
-            expose = true;
-        }
-    });
+    //$("#expose").click(function(e) {
+        //if (!expose) {
+            //exposeflow();
+            //expose = true;
+        //}
+    //});
 
     // Slide click hook
     slides.click(function(e) {
@@ -195,9 +195,11 @@ $(function(){
 
     // Hide flash after a few seconds
     setTimeout(function() {
-        transform($("#flash"),"translateY(-10em)");
+        transform($("#flash"),"translateY(-3em)");
     }, 3000);
 
     // Initialization
     normalflow();
+
+    $("body").css("line-height",(screenh/20)+"px").css("font-size",((screenh/20)*0.8)+"px");
 });
