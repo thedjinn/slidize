@@ -51,11 +51,9 @@ body {
     padding: 1px; // triggers inner margin
 }
 
-.title {
-    &.slide {
-        @include box-sizing(content-box);
-        display: table;
-    }
+.centered {
+    @include box-sizing(content-box);
+    display: table;
 
     .inner {
         display: table-cell;
@@ -63,11 +61,28 @@ body {
     }
 }
 
+.image {
+    background: url('http://playground.deaxon.com/css/lightbox/img/b1.jpg');
+    background-size: 100% auto;
+
+    .inner {
+        background: none;
+    }
+}
+
+.title {
+    @extend .centered;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    text-align: center;
+    color: #eee;
+    margin: .5em 0;
+}
+
 h1 {
     font-size: 60px;
     //margin: 4em 0 2em 0;
-    text-align: center;
-    color: #eee;
     //margin-top: 100px;
 }
 
