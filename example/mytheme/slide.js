@@ -135,7 +135,7 @@ $(function(){
     // Toggle the help panel
     function togglehelp() {
         showhelp=!showhelp;
-        help.css("opacity",showhelp?"1":"0.0");
+        help.toggleClass("inactive",!showhelp);
     }
 
     // Toggle expose mode
@@ -195,7 +195,7 @@ $(function(){
 
     // Hide flash after a few seconds
     setTimeout(function() {
-        transform($("#flash"),"translateY(-3em)");
+        $("#flash").addClass("inactive");
     }, 3000);
 
     // Initialization
