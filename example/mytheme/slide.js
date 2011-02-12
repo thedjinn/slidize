@@ -153,7 +153,7 @@ $(function(){
 
     // Keyboard hook
     $(document).keydown(function(e) {
-        keymap = {
+        var keymap = {
             33: prevslide,   // pgup
             37: prevslide,   // left
             38: prevslide,   // up
@@ -167,7 +167,9 @@ $(function(){
             72: togglehelp,  // h
             69: togglexpose  // e
         };
-        keymap[e.which]();
+
+        var fun;
+        (fun = keymap[e.which]) && fun();
     });
 
     // Slide click hook
