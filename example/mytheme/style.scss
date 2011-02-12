@@ -15,7 +15,7 @@ html {
 body {
     line-height: 20px;
     font-size: 20px;
-    -webkit-transition: .5s linear line-height, .5s linear font-size;
+    //-webkit-transition: .5s linear line-height, .5s linear font-size;
 }
 
 #slides, #viewport {
@@ -23,8 +23,8 @@ body {
     width: 100%;
     height: 100%;
     top: 0;
-    -webkit-transition: 1s ease all;
-    -moz-transition: 1s ease all;
+    -webkit-transition: 1s ease -webkit-transform;
+    -moz-transition: 1s ease -moz-transform;
 }
 
 .slide {

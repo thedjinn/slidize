@@ -34,16 +34,34 @@ $(function(){
     }
 
     // Immediately apply a set of css transition properties to a jQuery object
-    function transition(jq, trans) {
-        jq.css({
-            "-webkit-transition": trans,
-            "-moz-transition": trans,
-            "-o-transition": trans,
-            "transition": trans
+    // Properties argument must be a space separated string of css properties or
+    // an array with css properties. An asterisk at the beginning of a property is
+    // replaced with vendor prefixes.
+    function transition(jq, duration, ease, properties) {
+        // Make sure we have suitable input
+        if (typeof properties == "string") {
+            properties = properties.split(" ");
+        } else if (typeof properties != "object" || properties.length < 1) {
+            properties = ["*transform"];
+        }
+
+        // Create a transition property for each vendor prefix
+        var css = {};
+        ["-webkit-", "-moz-", "-o-", ""].forEach(function(vendor,i) {
+            var trans = properties.map(function(property) {
+                if (property[0] == "*") {
+                    property = vendor + property.slice(1);
+                }
+                return duration+" "+ease+" "+property;
+            }).join(", ");
+
+            css[vendor+"transition"] = trans;
         });
 
+        jq.css(css);
+
         // Trigger a reflow so the transition gets applied immediately
-        var tmp=jq.outerWidth(); // TODO: Find a function with less computational overhead
+        jq.outerWidth(); // TODO: Find a function with less computational overhead
     }
 
     // Reflow the layout to expose mode
@@ -56,8 +74,8 @@ $(function(){
         var dy = screenh*sy;
 
         // Prepare transition
-        transition(viewport, "2s ease all");
-        transition(slides, "2s ease all");
+        transition(viewport, "2s", "ease");
+        transition(slides, "2s", "ease");
 
         slides.each(function(i,e) {
             var x = i%a;
@@ -79,8 +97,8 @@ $(function(){
 
     // Reflow the layout to a horizontal strip
     function normalflow() {
-        transition(viewport, "1s ease all");
-        transition(slides, "1s ease all");
+        transition(viewport, "1s", "ease");
+        transition(slides, "1s", "ease");
         slides.each(function(i,e) {
             transform($(this),"translateX("+(i*screenw)+"px) scale(1.0,1.0)");
         });
@@ -99,7 +117,7 @@ $(function(){
     // Go to the next slide
     function nextslide() {
         if (current<slides.length-1 && !expose) {
-            transition(viewport, ".3s ease all");
+            transition(viewport, ".3s", "ease");
             current++;
             scrolltocurrent();
         }
@@ -108,7 +126,7 @@ $(function(){
     // Go to the previous slide
     function prevslide() {
         if (current>0 && !expose) {
-            transition(viewport, ".3s ease all");
+            transition(viewport, ".3s", "ease");
             current--;
             scrolltocurrent();
         }
@@ -117,7 +135,7 @@ $(function(){
     // Go to the first slide
     function firstslide() {
         if (!expose) {
-            transition(viewport, ".3s ease all");
+            transition(viewport, ".3s", "ease");
             current=0;
             scrolltocurrent();
         }
@@ -126,7 +144,7 @@ $(function(){
     // Go to the last slide
     function lastslide() {
         if (!expose) {
-            transition(viewport, ".3s ease all");
+            transition(viewport, ".3s", "ease");
             current=slides.length-1;
             scrolltocurrent();
         }
