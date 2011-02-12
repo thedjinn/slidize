@@ -170,14 +170,6 @@ $(function(){
         keymap[e.which]();
     });
 
-    // DEBUG
-    //$("#expose").click(function(e) {
-        //if (!expose) {
-            //exposeflow();
-            //expose = true;
-        //}
-    //});
-
     // Slide click hook
     slides.click(function(e) {
         if (expose) {
