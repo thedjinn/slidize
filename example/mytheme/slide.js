@@ -210,6 +210,17 @@ $(function(){
         $("#flash").addClass("inactive");
     }, 3000);
 
+    // Fix Kramdown table alignment
+    $("table").each(function() {
+        var table = $(this);
+        table.find("col").each(function(index,column) {
+            var align = $(column).attr("align");
+            if (align) {
+                table.find("tr>(th|td):nth-child("+(index+1)+")").css("text-align",align);
+            }
+        });
+    });
+
     // Initialization
     normalflow();
 
