@@ -1,7 +1,7 @@
 !set{:theme="mytheme"}
 
 !slide
-{:class="one two" title="foo bar slide"}
+{:class="one two title" title="foo bar slide"}
 
 # slide 1
 
