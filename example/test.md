@@ -3,21 +3,152 @@
 !slide
 {:class="one two title" title="foo bar slide"}
 
-# slide 1
+# Slidize theme tester
+
+## It's really comprehensive!
+
+!slide{:class="image"}
+
+# This is an image
 
 !slide{: class="inline"}
 
-# slide 2
+# Blockquote
+
+The following text is a block quote:
+
+> blah blah blah
+> blah blah
+> blah
+>
+> blah!
+>
+> Some more blah here! Lorem ipsum dolor sit amet etcetera.
 
 !slide
 {:class="many more classes"}
 
-# slide 3
+# Unordered lists (1/2)
+
+Plain list:
+
+* Foo
+* Bar
+* Baz
+* Quux
+
+!slide
+
+# Unordered lists (2/2)
+
+Paragraphed list:
+
+* Foo
+
+* Bar
+
+* Baz
+
+* Quux
+
+!slide
+
+# Ordered lists (1/2)
+
+Plain list:
+
+1. Foo
+2. Bar
+3. Baz
+4. Quux
+
+!slide
+
+# Ordered lists (2/2)
+
+Paragraphed list:
+
+1. Foo
+
+2. Bar
+
+3. Baz
+
+4. Quux
+
+!slide
+
+# Nested lists
+
+* Foo
+  * Sub 1
+  * Sub 2
+* Bar
+* Baz
+  1. Sub 1
+  2. Sub 2
+* Quux
+
+!slide
+
+# Definition lists
+
+single term
+: definition one
+: definition two
+
+first term
+second term
+: definition one
+: definition two
+
+another term
+
+: with paragraphs
+: without paragraphs
+
+!slide
+
+# Tables (1/2)
+
+Simple example:
+
+| Top left | Top right |
+| Mid left | Mid right |
+| Bottom left | Bottom right |
+
+!slide
+
+# Tables (2/2)
+
+More complex example:
+
+| Heading 1 | Heading 2 | Heading 3 |
+|:---------:|:----------|----------:|
+| Centered | Left aligned | Right aligned |
+| More content | Even more content | another cell |
+|-----------------------------------|
+| Centered | Left aligned | Right aligned |
+| More content | Even more content | another cell |
+|===================================|
+| Footer 1 | Footer 2 | Footer 3 |
+
+!slide
+
+# Custom HTML
+
+<p><strong>This <em>is</em></strong> some <em>custom</em> <u>html</u> <strike>code</strike></p>
+
+!slide
+
+# Span-level elements
+
+Plain *emphasized*, **strong**, [hyperlink](http://www.google.com/ "title"), `inline code`.
 
 !slide
 {:class="many more classes"}
 
-# slide 4
+# Code blocks
 
 ~~~
 def foo
@@ -27,57 +158,6 @@ end
 ~~~
 {:lang="ruby"}
 
-!slide
-{:class="many more classes"}
+!slide{:.title}
 
-# slide 5
-
-!slide
-{:class="many more classes"}
-
-# slide 6
-
-!slide
-{:class="many more classes"}
-
-# slide 7
-!slide
-{:class="many more classes"}
-
-# slide 7
-!slide
-{:class="many more classes"}
-
-# slide 7
-!slide
-{:class="many more classes"}
-
-# slide 7
-!slide
-{:class="many more classes"}
-
-# slide 7
-!slide
-{:class="many more classes"}
-
-# slide 7
-!slide
-{:class="many more classes"}
-
-# slide 7
-!slide
-{:class="many more classes"}
-
-# slide 7
-!slide
-{:class="many more classes"}
-
-# slide 7
-!slide
-{:class="many more classes"}
-
-# slide 7
-!slide
-{:class="many more classes"}
-
-# slide 7
+# That's all, folks.
