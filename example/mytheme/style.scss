@@ -1,7 +1,5 @@
 @import "all";
 
-// TODO: integrate stuff from zurb
-
 html, body, #viewport {
     overflow: hidden;
     height: 100%;
@@ -19,37 +17,36 @@ body {
 }
 
 #slides, #viewport {
+    @include transtrans(1s ease);
     position: absolute;
     width: 100%;
     height: 100%;
     top: 0;
-    -webkit-transition: 1s ease -webkit-transform;
-    -moz-transition: 1s ease -moz-transform;
 }
 
 .slide {
+    @include box-sizing(border-box);
+    @include transition(1s ease all);
+    @include transform(translate(140px,0));
+    @include transform-origin(top left);
     width: 100%;
     height: 100%;
-    -webkit-transform: translate(140px,0);
     position: absolute;
     background: #eee;
-    -webkit-transition: 1s ease all;
-    -webkit-transform-origin: top left;
-    -moz-transition: 1s ease all;
-    -moz-transform-origin: top left;
     padding: 32px;
-    @include box-sizing(border-box);
 }
 
 .inner {
-    //margin: 2em;
     @include border-radius(64px);
     //@include box-sizing(border-box);
+    //margin: 2em;
     background: rgba(0,0,0,0.8);
     height: 100%;
     //top: 0;
     padding: 1px; // triggers inner margin
 }
+
+// slide appearance modifiers
 
 .centered {
     @include box-sizing(content-box);
@@ -74,6 +71,8 @@ body {
     @extend .centered;
 }
 
+// formatting
+
 h1,h2,h3,h4,h5,h6 {
     text-align: center;
     color: #eee;
@@ -90,7 +89,14 @@ pre {
     @include prewrapping;
 }
 
+// panels
+
 #flash {
+    @include box-shadow(0px 0px 1em rgba(0,0,0,0.6));
+    @include border-radius-bottom(6px);
+    @include transform(translateY(0px));
+    @include transtrans(.5s ease-in);
+    @include vertical-gradient(#fff,#e6e6e6);
     text-align: center;
     position: relative;
     z-index: 100;
@@ -101,18 +107,12 @@ pre {
     margin: 0 auto;
 
     border: 1px solid #999;
-    -webkit-box-shadow: 0px 3px 6px rgba(0,0,0,0.25);
 
     padding: .5em 1em;
-    -webkit-border-bottom-left-radius: 6px;
-    -webkit-border-bottom-right-radius: 6px;
-    background: #fff -webkit-gradient(linear, left top, left bottom, from(rgb(255,255,255)), to(rgb(230,230,230)));
-    -webkit-transition: -webkit-transform .5s ease-in;
-    -webkit-transform: translateY(-0px);
 
     &.inactive {
+        @include transform(translateY(-3em));
         pointer-events: none;
-        -webkit-transform: translateY(-3em);
     }
 
     p + p {
@@ -121,13 +121,14 @@ pre {
 }
 
 #help {
+    @include transition(opacity .2s ease-in-out);
+    @include border-radius(1em);
+    @include box-shadow(0px 0px 1em rgba(0,0,0,0.6));
     z-index: 101;
     position: relative;
     top: 0;
     background: rgba(255,255,255,0.8);
-    @include transition(opacity .2s ease-in-out);
-    @include border-radius(1em);
-    @include box-shadow(0px 0px 1em rgba(0,0,0,0.6));
+
     padding: 1em;
     display: block;
     width: 50%;
@@ -152,6 +153,8 @@ pre {
     dd {
     }
 }
+
+// pygments
 
 .highlight {
     //@include border-radius(4px);
