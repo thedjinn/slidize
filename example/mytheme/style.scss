@@ -204,23 +204,13 @@ td, th {
 // panels
 
 #flash {
-    @include box-shadow(0px 0px 1em rgba(0,0,0,0.6));
-    @include border-radius-bottom(6px);
     @include transform(translateY(0px));
     @include transtrans(.5s ease-in);
-    @include vertical-gradient(#fff,#e6e6e6);
     text-align: center;
     position: relative;
+    width: 100%;
     z-index: 100;
     top: 0px;
-    //width: 400px;
-    //left: 100px;
-    width: 50%;
-    margin: 0 auto;
-
-    border: 1px solid #999;
-
-    padding: .5em 1em;
 
     &.inactive {
         @include transform(translateY(-3em));
@@ -228,7 +218,13 @@ td, th {
     }
     
     p {
+        @include box-shadow(0px 0px 1em rgba(0,0,0,0.6));
+        @include border-radius-bottom(6px);
+        @include vertical-gradient(#fff,#e6e6e6);
+        display: inline-block;
         margin: 0;
+        border: 1px solid #999;
+        padding: .5em 1em;
     }
 }
 
