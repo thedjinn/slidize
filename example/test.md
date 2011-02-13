@@ -26,6 +26,42 @@ The following text is a block quote:
 > Some more blah here! Lorem ipsum dolor sit amet etcetera.
 
 !slide
+
+# Heading 1
+
+## Heading 2
+
+### Heading 3
+
+#### Heading 4
+
+##### Heading 5
+
+###### Heading 6
+
+!slide
+
+# Heading 1
+
+## Heading 2
+
+Text
+
+### Heading 3
+
+Text
+
+#### Heading 4
+
+Text
+
+##### Heading 5
+
+Text
+
+###### Heading 6
+
+!slide
 {:class="many more classes"}
 
 # Unordered lists (1/2)
@@ -33,9 +69,12 @@ The following text is a block quote:
 Plain list:
 
 * Foo
-* Bar
+* This is a really long item which should span multiple lines. Bla bla blah blah!
 * Baz
 * Quux
+^
+* Bacon
+* Beans
 
 !slide
 
@@ -45,7 +84,7 @@ Paragraphed list:
 
 * Foo
 
-* Bar
+* This is a really long item which should span multiple lines. Bla bla blah blah!
 
 * Baz
 
@@ -58,9 +97,12 @@ Paragraphed list:
 Plain list:
 
 1. Foo
-2. Bar
+2. This is a really long item which should span multiple lines. Bla bla blah blah!
 3. Baz
 4. Quux
+^
+1. Bacon
+2. Beans
 
 !slide
 
@@ -70,7 +112,7 @@ Paragraphed list:
 
 1. Foo
 
-2. Bar
+2. This is a really long item which should span multiple lines. Bla bla blah blah!
 
 3. Baz
 
@@ -88,6 +130,14 @@ Paragraphed list:
   1. Sub 1
   2. Sub 2
 * Quux
+^
+1. This
+   * Is
+     * A
+       1. Really
+          * Deep
+            * Nesting
+              1. Example
 
 !slide
 
