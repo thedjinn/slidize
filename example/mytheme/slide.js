@@ -164,8 +164,16 @@ $(function(){
 
     // Resize hook to maintain correct slide dimensions
     jqwindow.resize(function(e) {
+        // Screen dimensions
         screenw = jqwindow.width();
         screenh = jqwindow.height();
+        
+        // Line height and font size
+        $("body").css({
+            "line-height": (screenh/20)+"px",
+            "font-size": ((screenh/20)*0.8)+"px"
+        });
+
         reflow();
     });
 
