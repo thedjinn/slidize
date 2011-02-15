@@ -12,7 +12,8 @@ $(function(){
     // Current state
     var expose = false;
     var showhelp = false;
-    var current = 0;
+    var current = parseInt(location.hash.substr(1)) || 0;
+    var enable_hashchange = true; // To disable hashchange event handling when setting a new hash
 
     // Apply a set of css transformation properties to a jQuery object
     function transform(jq, trans) {
@@ -106,39 +107,49 @@ $(function(){
         }
     }
 
+    // Set the current slide to n
+    function setslide(n) {
+        n = Math.max(0,Math.min(n,slides.length-1));
+
+        if (current!=n) {
+            current = n;
+            document.location.hash = "#"+current;
+        }
+
+        if (expose) {
+            expose=false;
+            normalflow();
+        } else {
+            transition(viewport, ".3s", "ease");
+            scrolltocurrent();
+        }
+    }
+
     // Go to the next slide
     function nextslide() {
         if (current<slides.length-1 && !expose) {
-            transition(viewport, ".3s", "ease");
-            current++;
-            scrolltocurrent();
+            setslide(current+1);
         }
     }
 
     // Go to the previous slide
     function prevslide() {
         if (current>0 && !expose) {
-            transition(viewport, ".3s", "ease");
-            current--;
-            scrolltocurrent();
+            setslide(current-1);
         }
     }
 
     // Go to the first slide
     function firstslide() {
         if (!expose) {
-            transition(viewport, ".3s", "ease");
-            current=0;
-            scrolltocurrent();
+            setslide(0);
         }
     }
 
     // Go to the last slide
     function lastslide() {
         if (!expose) {
-            transition(viewport, ".3s", "ease");
-            current=slides.length-1;
-            scrolltocurrent();
+            setslide(slides.length-1);
         }
     }
 
@@ -196,12 +207,21 @@ $(function(){
             var this_slide = $(this).get()[0];
             slides.each(function(i,e) {
                 if (this_slide == e) {
-                    current = i;
+                    setslide(i);
+                    return false;
                 }
             });
+        }
+    });
 
-            expose = false;
-            normalflow();
+    // Hashchange hook
+    // We need to be careful here, this event is also triggered when 
+    // we change the location hash ourselves.
+    jqwindow.bind("hashchange", function(e) {
+        var n = parseInt(location.hash.substr(1)) || 0;
+        
+        if (n != current) {
+            setslide(n);
         }
     });
 
