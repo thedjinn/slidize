@@ -14,14 +14,6 @@ $(function(){
     var showhelp = false;
     var current = 0;
 
-    // debug
-    //slides.each(function(i,e) {
-        //var hue = 'rgb(' + (Math.floor((256-199)*Math.random()) + 200) + ','
-                         //+ (Math.floor((256-199)*Math.random()) + 200) + ','
-                         //+ (Math.floor((256-199)*Math.random()) + 200) + ')';
-        //$(this).css("background-color", hue); 
-    //});
-
     // Apply a set of css transformation properties to a jQuery object
     function transform(jq, trans) {
         jq.css({
