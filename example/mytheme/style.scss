@@ -120,18 +120,30 @@ blockquote {
 }
 
 ul {
-    //margin: 1em 0;
     list-style: none;
     
     & > li::before {
         content: ">";
-        color: #7d0;
         padding-right: .5em;
     }
 }
 
-li {
-    //margin: 0.5em 0;
+ol {
+    list-style: none;
+    counter-reset: ol;
+
+    & > li {
+        counter-increment: ol;
+    }
+
+    & > li::before {
+        content: counter(ol) ".";
+        padding-right: .25em;
+    }
+}
+
+li::before {
+    color: #7d0;
 }
 
 li li::before {
@@ -147,7 +159,6 @@ li li li li::before {
 }
   
 ol {
-    //margin: 1em 0;
     list-style-position: inside;
 }
 
