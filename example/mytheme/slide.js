@@ -13,7 +13,6 @@ $(function(){
     var expose = false;
     var showhelp = false;
     var current = parseInt(location.hash.substr(1)) || 0;
-    var enable_hashchange = true; // To disable hashchange event handling when setting a new hash
 
     // Apply a set of css transformation properties to a jQuery object
     function transform(jq, trans) {
