@@ -25,10 +25,10 @@ $(function(){
         });
     }
 
-    // Immediately apply a set of css transition properties to a jQuery object
-    // Properties argument must be a space separated string of css properties or
-    // an array with css properties. An asterisk at the beginning of a property is
-    // replaced with vendor prefixes.
+    // Immediately apply a set of css transition properties to a jQuery 
+    // object. Properties argument must be a space separated string of css 
+    // properties or an array with css properties. An asterisk at the 
+    // beginning of a property is replaced with vendor prefixes.
     function transition(jq, duration, ease, properties) {
         // Make sure we have suitable input
         if (typeof properties == "string") {
