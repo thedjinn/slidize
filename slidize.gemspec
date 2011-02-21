@@ -25,4 +25,5 @@ Gem::Specification.new do |s|
   s.add_dependency(%q<kramdown>, [">= 0"])
   s.add_dependency(%q<haml>, ["~> 3.0.0"])
   s.add_dependency(%q<albino>, ["~> 1.2.0"])
+  s.add_dependency(%q<turbosass>, [">= 0"])
 end

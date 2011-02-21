@@ -117,11 +117,6 @@ module Slidize
     File.join(self.base_directory, "javascript")
   end
 
-  # Sass framework directory
-  def self.sass_directory
-    File.join(self.base_directory, "vendor", "turbosass")
-  end
-
   # Find a theme in either the theme directory or the current directory, return directory of the them
   def self.find_theme(name)
     dir = File.join(self.theme_directory, name)

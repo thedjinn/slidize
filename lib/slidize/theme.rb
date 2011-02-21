@@ -1,3 +1,5 @@
+require "turbosass"
+
 module Slidize
   class Theme
     DEFAULT_SETTINGS = {
@@ -88,7 +90,7 @@ module Slidize
       css = @stylesheet_list.map do |filename|
         # TODO: do not assume everything is scss but check based on filename
         stylesheet = File.read(File.join(@theme_path, filename))
-        engine = Sass::Engine.new(stylesheet, :syntax => :scss, :style => @settings[:scss_style], :cache => false, :load_paths => [Dir.pwd, @theme_path, Slidize.sass_directory]) # TODO: add turbosass
+        engine = Sass::Engine.new(stylesheet, :syntax => :scss, :style => @settings[:scss_style], :cache => false, :load_paths => Sass::Engine.const_get(:DEFAULT_OPTIONS)[:load_paths] + [@theme_path])
         engine.render
       end
       css.join("\n")
