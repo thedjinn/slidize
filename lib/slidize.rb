@@ -154,11 +154,24 @@ module Slidize
       puts ">> #{path_info}"
 
       if path_info == "/" or path_info == "/index.html"
-        output = ::Slidize.process("test.md")
-        puts output
+        output = cache path_info do 
+          puts ">> Rendering..."
+          ::Slidize.process("test.md")
+        end
+
         [200, {"Content-Type" => "text/html"}, [output]]
       else
         @dir.call(env)
+      end
+    end
+
+    private
+    def cache(token)
+      if ENV["RACK_ENV"] == "development"
+        yield
+      else
+        @cache ||= {}
+        @cache[token] ||= yield
       end
     end
   end
